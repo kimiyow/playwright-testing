@@ -2,29 +2,25 @@ import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
   await page.goto('https://blazedemo.com/index.php');
-  await page.locator('select[name="fromPort"]').selectOption('Mexico City');
-  await page.getByRole('button', { name: 'Find Flights' }).click();
-  await page.getByRole('row', { name: 'Choose This Flight 43 Virgin' }).getByRole('button').click();
-  await page.getByRole('textbox', { name: 'Name', exact: true }).click();
-  await page.getByRole('textbox', { name: 'Name', exact: true }).fill('Kim');
-  await page.locator('form div').filter({ hasText: 'Address' }).click();
-  await page.getByRole('textbox', { name: 'Address' }).dblclick();
-  await page.getByRole('textbox', { name: 'Address' }).fill('123');
-  await page.getByRole('textbox', { name: 'City' }).click();
-  await page.getByRole('textbox', { name: 'City' }).fill('Ens');
-  await page.getByRole('textbox', { name: 'State' }).click();
-  await page.getByRole('textbox', { name: 'State' }).fill('BC12');
-  await page.getByRole('textbox', { name: 'Zip Code' }).click();
-  await page.getByRole('textbox', { name: 'Zip Code' }).fill('323');
-  await page.getByRole('textbox', { name: 'State' }).click();
-  await page.getByRole('textbox', { name: 'Credit Card Number' }).click();
-  await page.getByRole('textbox', { name: 'Credit Card Number' }).fill('2133123123123');
-  await page.getByRole('textbox', { name: 'Month' }).click();
-  await page.getByRole('textbox', { name: 'Year' }).click();
-  await page.getByRole('textbox', { name: 'Name on Card' }).click();
-  await page.getByRole('textbox', { name: 'Name on Card' }).fill('2132');
-  await page.getByText('Name on Card').click();
-  await page.getByRole('textbox', { name: 'Name on Card' }).click();
-  await page.getByRole('textbox', { name: 'Name on Card' }).fill('Kim Kim');
-  await page.getByRole('button', { name: 'Purchase Flight' }).click();
+  await page.locator('select[name="fromPort"]').selectOption('Mexico City'); // Esto es un locator que selecciona el select de origen y le da el valor de Mexico City
+  await page.locator('select[name="toPort"]').selectOption('London'); 
+  await page.locator('input[type="submit"]').click();
+  await page.locator('div.container > table > tbody > tr:nth-child(1) > td:nth-child(2) > input]').click();
+  await page.locator('input[name="inputName"]').fill('Kim');
+  await page.locator('input[name="address"]').fill('123');
+
+  await page.locator('input[name="city"]').fill('Ens');
+  await page.locator('input[name="state"]').fill('BC12');
+  await page.locator('input[name="zipCode"]').fill('323');
+  await page.locator('input[name="state"]').click();
+  await page.locator('select[name="cardType"]').selectOption('visa');
+
+  await page.locator('input[name="creditCardNumber"]').fill('2133123123123');
+  await page.locator('input[name="creditCardMonth"]').fill('12');
+  await page.locator('input[name="creditCardYear"]').fill('2025');
+  await page.locator('input[name="nameOnCard"]').fill('Kim Kim');
+  await page.locator ('input[type="submit"]').click();
+
+ 
 });
+
