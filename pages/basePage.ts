@@ -1,6 +1,6 @@
 
 
-import { Page, expect } from "@playwright/test";
+import { Page, expect } from "@playwright/test"; 
 
 // La base page va a traer todos los métodos que tengamos enlazados con playwright 
 export class BasePage  {
@@ -11,9 +11,8 @@ export class BasePage  {
         this.page = page;
     }
 
-
     // Aqui podemos crear los metodos que se van a repetir en todas las paginas, como por ejemplo el goto, o el click, o el fill, etc.
-    async goto (url: string) {
+    async loadWeb (url: string) {
         await this.page.goto(url);
     }
 
@@ -21,12 +20,17 @@ export class BasePage  {
         await this.page.click(selector);
     }
 
-    async selectOption(selector: string, value: string) {
-        await this.page.selectOption(selector, value);
+    async fillField(selector:string, value:string)
+    {
+        await this.page.locator(selector).fill(value);
     }
 
-    async fill(select:string, value:string)
-    {
-        await this.page.fill(select, value);
+    async selectOption(selector:string, value:string) {
+        await this.page.locator(selector).selectOption(value);
     }
-}
+
+    async expectVisible(selector:string) {
+        await expect(this.page.locator(selector)).toBeVisible();
+    }
+    
+}   
