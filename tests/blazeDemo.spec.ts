@@ -1,13 +1,13 @@
 import { test} from '@playwright/test';
-import { bookingPage } from '../pages/bookingPage';
+import { formPage } from '../pages2/formPage';
 import { BasePage } from '../pages/basePage'; 
 
 test('test', async ({ page }) => {
   const basePage = new BasePage(page);
-  const bookingPageInstance = new bookingPage(page);
-  await basePage.loadWeb('https://blazedemo.com/');
+  const formPageInstance = new formPage(page);
+  await basePage.loadWeb('https://siccaf.uabc.mx/');
 
-  await bookingPageInstance.selectDestiny();
-  await bookingPageInstance.fillForm();
+  await formPageInstance.loginForm();
+ 
 });
 
