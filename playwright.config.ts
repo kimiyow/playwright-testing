@@ -1,4 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+declare module '@playwright/test' {
+  interface PlaywrightTestOptions {
+    username?: string;
+    password?: string;
+  } 
+}
 
 /**
  * Read environment variables from file.
@@ -30,7 +40,10 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-  },
+    username: process.env.USERNAME,
+    password: process.env.PASSWORD,
+
+  }, 
 
   /* Configure projects for major browsers */
   projects: [

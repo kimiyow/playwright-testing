@@ -5,7 +5,7 @@ import { BasePage } from '../pages/basePage';
 test('test', async ({ page }) => {
   const basePage = new BasePage(page);
   const formPageInstance = new formPage(page);
-  await basePage.loadWeb('https://siccaf.uabc.mx/');
+  await basePage.loadWeb('http://eservicios.clouddds.ens.uabc.mx/eServicios-web/app/');
 
   await formPageInstance.loginForm();
  
