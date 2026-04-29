@@ -8,6 +8,10 @@ test('test', async ({ page }) => {
   await basePage.loadWeb('http://eservicios.clouddds.ens.uabc.mx/eServicios-web/app/');
 
   await formPageInstance.loginForm();
- 
+  await formPageInstance.changeRole();
+
+  const navbar = page.getByRole('navigation');
+  const homeLink = navbar.getByRole('link', { name: 'menu-solicitudes' });
+ await homeLink.click();
 });
 
