@@ -9,3 +9,4 @@
     createSolicitud: 'button#nuevoRegistroSAM'
     };
 
+   

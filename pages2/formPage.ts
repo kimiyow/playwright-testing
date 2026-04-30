@@ -38,14 +38,24 @@ export class formPage extends BasePage {
         await this.buttonConfirmarRol.click();
     }
 
-    async accessSolicitud(){
-         await this.page.getByText('MENÚ', { exact: true }).click();
-         await this.page.getByRole('link', { name: ' 27 Solicitudes ' }).click();
-         await this.page.getByRole('link', { name: 'Acciones de Movilidad7' }).click();
-    }
+    // async accessSolicitud(){
+    //      await this.page.getByText('MENÚ', { exact: true }).click();
+    //      await this.page.getByRole('link', { name: ' 27 Solicitudes ' }).click();
+    //      await this.page.getByRole('link', { name: 'Acciones de Movilidad7' }).click();
+    // }
 
-    async createSolicitud(){
-        await this.page.locator(formsLocators.createSolicitud).click();
-    }
+    async navBar(){
+        await this.page.getByText('MENÚ', { exact: true }).click();
+        const navBar = this.page.locator('main-nav:hover');
+        const menuItem = navBar.locator('a', { hasText: 'Solicitudes' });
+        const submenuItem = navBar.locator('a', { hasText: 'Acciones de Movilidad' });
+
+        await menuItem.hover();
+        await submenuItem.click();
+      
+        
+     }
+      
+    
 
 }
